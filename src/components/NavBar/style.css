@@ -1,0 +1,11 @@
+.Navbar {
+  background-color: rgb(92, 92, 92);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  padding: 1em;
+}
+
+.Navitem {
+  display: ;
+}

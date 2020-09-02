@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOG_OUT } from "./actions"
+import { LOGIN_SUCCESS, LOG_OUT, UserActionTypes } from "./types"
 
 const initialState = {
   token: localStorage.getItem("token"),
@@ -6,11 +6,14 @@ const initialState = {
   email: null
 }
 
-export default (state = initialState, action: any) => {
+export default (state = initialState, action: UserActionTypes) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
-      localStorage.setItem("token", action.payload.token)
-      return { ...state, ...action.payload }
+      console.log("action", action)
+      if (action.user.token) {
+        localStorage.setItem("token", action.user.token)
+      }
+      return { ...state, ...action.user }
 
     case LOG_OUT:
       console.log("hello from logout in reducer")

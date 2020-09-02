@@ -5,13 +5,16 @@ import App from "./App"
 import * as serviceWorker from "./serviceWorker"
 import { Provider } from "react-redux"
 import store from "./store"
+import { BrowserRouter as R } from "react-router-dom"
 
 ReactDOM.render(
-  <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </Provider>,
+  <R>
+    <Provider store={store}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </Provider>
+  </R>,
   document.getElementById("root")
 )
 
