@@ -9,19 +9,16 @@ const initialState = {
 export default (state = initialState, action: UserActionTypes) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
-      console.log("action", action)
-      if (action.user.token) {
+      if (action.user.token !== null) {
         localStorage.setItem("token", action.user.token)
       }
+
       return { ...state, ...action.user }
 
     case LOG_OUT:
-      console.log("hello from logout in reducer")
+      if (action.user) console.log("hello from logout in reducer")
       localStorage.removeItem("token")
       return { ...initialState, token: null }
-
-    // case TOKEN_STILL_VALID:
-    //   return { ...state, ...action.payload }
 
     default:
       return state

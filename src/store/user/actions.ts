@@ -9,13 +9,10 @@ import { GetState } from "../types"
 import { Dispatch } from "redux"
 
 export function login(userInfo: Credentials) {
-  return async (dispatch: any, getState: GetState) => {
+  return async (dispatch: Dispatch, getState: GetState) => {
     try {
-      console.log(userInfo)
       const response = await Axios.post(`${API_URL}login`, userInfo)
-
       dispatch(loginSucces(response.data))
-      console.log(response)
     } catch (error) {
       console.log(error.message)
     }
@@ -30,7 +27,7 @@ function loginSucces(input: User) {
 }
 
 export function logout() {
-  return (dispatch: any, _: GetState) => {
+  return (dispatch: Dispatch, _: GetState) => {
     dispatch({
       type: LOG_OUT
     })
@@ -53,5 +50,15 @@ export function signUp(userInfo: SignUpInput) {
 }
 
 export function fetchUserFromToken() {
-  console.log("test test from fetch")
+  return async (dispatch: Dispatch, getState: GetState) => {
+    try {
+      const response = await Axios.get(`${API_URL}me`, {
+        headers: { Authorization: `Bearer ${getState().user.token}` }
+      })
+
+      dispatch(loginSucces(response.data))
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
 }
