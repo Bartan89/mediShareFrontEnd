@@ -1,16 +1,20 @@
-import { FETCH_POSTS, PostActionTypes, ADD_ONE_POST } from "./types"
+import { ADD_CONTENT, PostActionTypes, ADD_STATUS } from "./types"
+import { Post } from "../../types-app-wide/postTypes"
 
-const initialState = {
-  posts: []
+const initialState: Post = {
+  id: null,
+  content: null,
+  status: "Draft"
 }
 
 export default (state = initialState, action: PostActionTypes) => {
   switch (action.type) {
-    case FETCH_POSTS:
-      return { posts: action.posts }
+    case ADD_CONTENT:
+      return { ...state, content: action.content }
 
-    case ADD_ONE_POST:
-      return { posts: [...state.posts, action.post] }
+    case ADD_STATUS:
+      return { ...state, status: action.status }
+
     default:
       return state
   }

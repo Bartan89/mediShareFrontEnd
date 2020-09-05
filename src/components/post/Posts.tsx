@@ -1,66 +1,48 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchPosts } from "../../store/post/action"
-import { selectPosts } from "../../store/post/selectors"
-import { Post } from "../../types-app-wide/postTypes"
-import { prettyDOM } from "@testing-library/react"
-import { BrowserRouter, Link } from "react-router-dom"
-import SearchPost from "./SearchPost"
+import { fetchPosts } from "../../store/posts/action"
+import { selectPosts } from "../../store/posts/selectors"
+import { Post, Status } from "../../types-app-wide/postTypes"
+import { Link } from "react-router-dom"
 import { OnChange } from "../../types-app-wide/eventListeners"
+import "./style.css"
+import SearchPost from "./SearchPost"
+import ShowPosts from "../ShowPosts"
+import SortById from "../SortById"
+import SortByStatus from "../SortByStatus"
 
 export default function Posts() {
-  const [searched, setSearched] = useState<any>([])
-
-  const posts: Post[] = useSelector(selectPosts)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchPosts())
   }, [dispatch])
 
-  const copy = [...posts]
+  const selectsOthers = ["id"]
+  const selectsForStatus: Status[] = ["Draft", "Await approval", "Disregarded", "Published"]
 
-  const sorted = copy.sort(function (a: Post, b: Post) {
-    if (!a.id || !b.id) {
-      return 0
-    }
-    return b.id - a.id
-  })
+  const combineSelector = [...selectsOthers, ...selectsForStatus]
 
-  // function includes(element : Post, value: string){
-  //   if (element.content.toLowerCase().includes(lowerValue)) {}
+  const [selected, setSelected] = useState(selectsOthers[0])
 
-  // }
-
-  function Search(e: OnChange) {
-    const lowerValue = e.target.value.toLowerCase()
-    const searched = sorted.filter((element) => {
-      if (element.content.toLowerCase().includes(lowerValue)) {
-        return element
-      }
-    })
-
-    setSearched(searched)
+  function selectOption(e: any) {
+    setSelected(e.target.value)
   }
-
-  const results = searched.length ? searched : sorted
 
   return (
     <div>
       <h4>Search your posts</h4>
-      <div>
-        <label htmlFor="">Search posts:</label>
-        <input onChange={Search} type="text" />
-      </div>
       <h4>All posts:</h4>
-      {results.map((post: Post, i: number) => {
-        return (
-          <div key={i}>
-            <p>{post.content}</p>
-            <Link to={`post/${post.id}`}>Detail page</Link>
-          </div>
-        )
-      })}
+      <label htmlFor="cars">Filter by:</label>
+
+      <select onChange={selectOption} name="cars" id="cars">
+        {combineSelector.map((selector) => {
+          return <option value={selector}>{selector}</option>
+        })}
+      </select>
+      <SortByStatus status={selected} />
     </div>
   )
 }
+
+//</div>const value = post.content || ""

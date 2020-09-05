@@ -1,3 +1,5 @@
 import { StoreState } from "../types"
 
-export const selectPosts = (state: StoreState) => state.post.posts
+export const selectIsPortContentEmpty = (state: StoreState) => state.post.content === null || state.post.content === ""
+
+export const selectValueForContent = (state: StoreState) => state.post.content

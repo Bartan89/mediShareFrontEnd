@@ -1,9 +1,10 @@
 import React from "react"
-import Login from "./NavBar/Login"
-import Logout from "./NavBar/Logout"
-import { selectToken } from "../store/user/selectors"
+import Login from "./Login"
+import Logout from "./Logout"
+import { selectToken } from "../../store/user/selectors"
 import { useSelector } from "react-redux"
-import "./NavBar/style.css"
+import "./style.css"
+import SearchPost from "../post/SearchPost"
 
 export default function NavBar() {
   const token = useSelector(selectToken)
@@ -11,7 +12,10 @@ export default function NavBar() {
   return (
     <div className="Navbar">
       <span>home </span>
+      <span>My posts </span>
       {token === null ? <Login /> : <Logout />}
+
+      <SearchPost />
     </div>
   )
 }

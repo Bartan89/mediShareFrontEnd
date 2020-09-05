@@ -1,21 +1,14 @@
-import { Post } from "../../types-app-wide/postTypes"
+export const ADD_CONTENT = "ADD_CONTENT"
+export const ADD_STATUS = "ADD_STATUS"
 
-export const FETCH_POSTS = "FETCH_POSTS"
-export const ADD_ONE_POST = "ADD_ONE_POST"
-
-type FetchPosts = {
-  type: typeof FETCH_POSTS
-  posts: Post[]
+type AddContent = {
+  type: typeof ADD_CONTENT
+  content: string
 }
 
-type AddOnePost = {
-  type: typeof ADD_ONE_POST
-  post: Post
+type AddStatus = {
+  type: typeof ADD_STATUS
+  status: string
 }
 
-// type LogoutSuccesAction = {
-//   type: typeof LOG_OUT
-//   user: null
-// }
-
-export type PostActionTypes = FetchPosts | AddOnePost
+export type PostActionTypes = AddContent | AddStatus

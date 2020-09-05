@@ -7,8 +7,8 @@ import { Link } from "react-router-dom"
 
 export default function Login() {
   const [userInfo, setUserInfo] = useState<Credentials>({
-    email: "test@test.com",
-    password: "test1234"
+    email: "Joey@test.com",
+    password: "123"
   })
 
   const dispatch = useDispatch()

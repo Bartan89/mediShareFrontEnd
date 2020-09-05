@@ -3,7 +3,8 @@ import { Post } from "../types-app-wide/postTypes"
 
 export type StoreState = {
   user: User
-  post: any
+  post: Post
+  posts: Post[]
 }
 
 export type GetState = () => StoreState
