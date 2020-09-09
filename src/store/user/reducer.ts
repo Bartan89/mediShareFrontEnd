@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOG_OUT, UserActionTypes } from "./types"
+import { LOGIN_SUCCESS, LOG_OUT, TOKEN_STILL_VALID, UserActionTypes } from "./types"
 
 const initialState = {
   token: localStorage.getItem("token"),
@@ -19,6 +19,9 @@ export default (state = initialState, action: UserActionTypes) => {
       if (action.user) console.log("hello from logout in reducer")
       localStorage.removeItem("token")
       return { ...initialState, token: null }
+
+    case TOKEN_STILL_VALID:
+      return { ...state, ...action.payload }
 
     default:
       return state

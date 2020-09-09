@@ -1,17 +1,14 @@
-import React, { useState } from "react"
-
-import { useSelector, useDispatch } from "react-redux"
-import { Link } from "react-router-dom"
-import { Post } from "../types-app-wide/postTypes"
-import { selectPosts } from "../store/posts/selectors"
-
+import Button from "@material-ui/core/Button"
 import { makeStyles } from "@material-ui/core/styles"
 import TextField from "@material-ui/core/TextField"
-import Button from "@material-ui/core/Button"
-
 import FileCopyIcon from "@material-ui/icons/FileCopy"
-import { AnyAaaaRecord } from "dns"
+import React, { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { copyAndStoreApost } from "../store/myposts/actions"
+import { selectPosts } from "../store/posts/selectors"
+import { Post, Media } from "../types-app-wide/postTypes"
+import { Avatar } from "material-ui"
+import SocialMediumIcon from "./SocialMediumIcon"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,6 +47,7 @@ export default function ShowPosts(props: any) {
           return (
             <div>
               <TextField inputProps={{ readOnly: true }} value={post.content} id="outlined-multiline-static" label={`status: ${post.status}`} multiline rows={10} variant="outlined" />
+              <SocialMediumIcon medium="LinkedInIcon" />
               <div>
                 <Button variant="contained" disabled={copied.theones.includes(post.id) ? true : false} onClick={() => handleCopy(post.id)} size="small" className={classes.button} startIcon={<FileCopyIcon />}>
                   {copied.theones.includes(post.id) ? <small>coppied</small> : <small>copy</small>}

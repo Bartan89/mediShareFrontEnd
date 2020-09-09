@@ -4,7 +4,7 @@
 import Axios from "axios"
 import { Credentials, SignUpInput, User } from "../../types-app-wide/userTypes"
 import { API_URL } from "../../config/constants"
-import { LOGIN_SUCCESS, LOG_OUT } from "./types"
+import { LOGIN_SUCCESS, LOG_OUT, TOKEN_STILL_VALID } from "./types"
 import { GetState } from "../types"
 import { Dispatch } from "redux"
 
@@ -56,9 +56,14 @@ export function fetchUserFromToken() {
         headers: { Authorization: `Bearer ${getState().user.token}` }
       })
 
-      dispatch(loginSucces(response.data))
+      dispatch(tokenStillValid(response.data))
     } catch (error) {
       console.log(error.message)
     }
   }
 }
+
+const tokenStillValid = (userWithoutToken: any) => ({
+  type: TOKEN_STILL_VALID,
+  payload: userWithoutToken
+})

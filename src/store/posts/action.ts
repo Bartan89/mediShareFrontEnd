@@ -84,8 +84,14 @@ export function postToDataBase() {
 // }
 
 export function fetchPosts() {
-  return async (dispatch: Dispatch) => {
-    const response = await Axios.get(`${API_URL}posts`)
+  return async (dispatch: Dispatch, getState: GetState) => {
+    const JWT = getState().user.token
+
+    const response = await Axios.get(`${API_URL}posts`, {
+      headers: {
+        Authorization: `Bearer ${JWT}`
+      }
+    })
 
     console.log(response.data)
     dispatch(dispatchPosts(response.data))

@@ -15,4 +15,9 @@ type LogoutSuccesAction = {
   user: null
 }
 
-export type UserActionTypes = LoginSuccesAction | LogoutSuccesAction
+type TokenStillValid = {
+  type: typeof TOKEN_STILL_VALID
+  payload: User
+}
+
+export type UserActionTypes = LoginSuccesAction | LogoutSuccesAction | TokenStillValid

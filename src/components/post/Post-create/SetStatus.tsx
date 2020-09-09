@@ -17,7 +17,7 @@ export default function SetStatus() {
     dispatch(storeStatusInput(e.target.value))
   }
 
-  const Statusses: Status[] = ["Draft", "Disregarded", "Await approval", "Published"]
+  const Statusses: Status[] = [Status.draft, Status.awaitApproval, Status.disregarded, Status.published]
 
   const useStyles = makeStyles((theme) => ({
     formControl: {

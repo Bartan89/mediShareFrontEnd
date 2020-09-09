@@ -1,26 +1,25 @@
-// const _DRAFT = "Draft"
-// const _PENDING_APPROVAL = "Await approval"
-// const _DISREGARDED = "Disregarded"
-// const _APPROVED = "Approved"
-// const _PUBLISHED = "Published"
-
 export type Post = {
   content: string | null
   id: number | null
   status: Status | null
+  translation?: string | null
 }
 
-export type Status = "Draft" | "Await approval" | "Disregarded" | "Published"
+export type Translation = {
+  id: number | null
+  content: string | null
+  loading?: Boolean
+}
 
-// export enum Statuses {
-//   _DRAFT = "Draft",
-//   _PENDING_APPROVAL = "Await approval",
-//   _DISREGARDED = "Disregarded",
-//   _APPROVED = "Approved",
-//   _PUBLISHED = "Published"
-// }
+export enum Status {
+  draft = "Draft",
+  awaitApproval = "Await approval",
+  disregarded = "Disregarded",
+  published = "Published"
+}
 
-// export type Status = keyof typeof Statuses
-
-//validation  1) ->  Is this good?
-//sustainable 2) ->  Can it be improved
+export enum Media {
+  linkedIn = "LinkedIn",
+  facebook = "Facebook",
+  twitter = "Twitter"
+}

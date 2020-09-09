@@ -1,10 +1,10 @@
 import { ADD_CONTENT, PostActionTypes, ADD_STATUS } from "./types"
-import { Post } from "../../types-app-wide/postTypes"
+import { Post, Status } from "../../types-app-wide/postTypes"
 
 const initialState: Post = {
   id: null,
   content: null,
-  status: "Draft"
+  status: Status.draft
 }
 
 export default (state = initialState, action: PostActionTypes) => {

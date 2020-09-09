@@ -9,9 +9,7 @@ import { BrowserRouter as R } from "react-router-dom"
 ReactDOM.render(
   <R>
     <Provider store={store}>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <App />
     </Provider>
   </R>,
   document.getElementById("root")

@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from "react"
+import Modal from "@material-ui/core/Modal"
+import { makeStyles } from "@material-ui/core/styles"
+import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { storeContentInput } from "../../../store/post/actions"
-
-import { makeStyles } from "@material-ui/core/styles"
-import Modal from "@material-ui/core/Modal"
-import SubmitPost from "./SubmitPost"
+import { selectValueForContent } from "../../../store/post/selectors"
+import { selectPostslength } from "../../../store/posts/selectors"
 import "../style.css"
 import SetStatus from "./SetStatus"
-import { selectPostslength } from "../../../store/posts/selectors"
-
-import Avatar from "../../Avatar"
-import { selectValueForContent } from "../../../store/post/selectors"
+import SubmitPost from "./SubmitPost"
 
 function rand() {
   return Math.round(Math.random() * 20) - 10

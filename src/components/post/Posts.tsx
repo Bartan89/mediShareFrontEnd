@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { fetchPosts } from "../../store/posts/action"
-import { selectPosts } from "../../store/posts/selectors"
-import { Post, Status } from "../../types-app-wide/postTypes"
-import { Link } from "react-router-dom"
-import { OnChange } from "../../types-app-wide/eventListeners"
-import "./style.css"
-import SearchPost from "./SearchPost"
-import ShowPosts from "../ShowPosts"
-import SortById from "../SortById"
+import { Status } from "../../types-app-wide/postTypes"
 import SortByStatus from "../SortByStatus"
+import "./style.css"
 
 export default function Posts() {
   const dispatch = useDispatch()
@@ -19,7 +13,8 @@ export default function Posts() {
   }, [dispatch])
 
   const selectsOthers = ["id"]
-  const selectsForStatus: Status[] = ["Draft", "Await approval", "Disregarded", "Published"]
+
+  const selectsForStatus: Status[] = [Status.draft, Status.awaitApproval, Status.disregarded, Status.published]
 
   const combineSelector = [...selectsOthers, ...selectsForStatus]
 
