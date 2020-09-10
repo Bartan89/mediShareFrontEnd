@@ -83,6 +83,9 @@ export default function SearchAppBar() {
           <Link to="/my-posts">
             <Button variant="contained">My posts</Button>
           </Link>
+          <Link to="/visual-sketcher">
+            <Button variant="contained">Visual Sketcher</Button>
+          </Link>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="open drawer"></IconButton>
           {token === null ? <Login /> : <Logout />}
 

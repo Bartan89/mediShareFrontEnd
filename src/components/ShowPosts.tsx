@@ -50,7 +50,7 @@ export default function ShowPosts(props: any) {
               <SocialMediumIcon medium="LinkedInIcon" />
               <div>
                 <Button variant="contained" disabled={copied.theones.includes(post.id) ? true : false} onClick={() => handleCopy(post.id)} size="small" className={classes.button} startIcon={<FileCopyIcon />}>
-                  {copied.theones.includes(post.id) ? <small>coppied</small> : <small>copy</small>}
+                  {copied.theones.includes(post.id) ? <small>copied</small> : <small>copy</small>}
                 </Button>
               </div>
                {/* <button className="deleteButton">X</button> */}

@@ -11,6 +11,7 @@ import PostDetail from "./components/post/PostDetail"
 import Index from "./pages/Posts"
 import Footer from "./components/Footer/Footer"
 import myPosts from "./pages/my-posts"
+import VisualSketch from "./pages/VisualSketch"
 
 function App() {
   const dispatch = useDispatch()
@@ -28,6 +29,7 @@ function App() {
         <Route exact path="/post/:id" component={PostDetail} />
         <Route exact path="/" component={Index} />
         <Route exact path="/my-posts" component={myPosts} />
+        <Route exact path="/visual-sketcher" component={VisualSketch} />
       </Switch>
 
       <Footer />
