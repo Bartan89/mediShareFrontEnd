@@ -2,7 +2,17 @@ import { MyVisual, Title } from "../../types-app-wide/visualTypes"
 import { MyVisualActionTypes, STORE_BG_COLOR, STORE_YPOSTIION, ADD_ONE_TITLE, DELETE_TITLE_BY_ID } from "./types"
 
 const initialState: MyVisual = {
-  titles: [],
+  titles: [
+    {
+      id: 1,
+      text: "Bigger text",
+      xposition: 150,
+      yposition: 50,
+      scale: 30,
+      color: "black",
+      rotation: 0
+    }
+  ],
   background: {
     color: "#AED8E6"
   },
